@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.data.BuildConfig.BASE_URL
 import com.example.data.resource.local.room.AppDatabase
+import com.example.data.resource.local.room.util.DbTypeConverter
 import com.example.data.resource.remote.ApiService
 import com.example.data.resource.remote.AuthInterceptor
 import com.google.gson.Gson
@@ -33,14 +34,14 @@ abstract class DataModule {
         @Singleton
         fun provideAppDatabase(
             @ApplicationContext appContext: Context,
-//            dbTypeConverter: DbTypeConverter
+            dbTypeConverter: DbTypeConverter
         ): AppDatabase =
             Room.databaseBuilder(
                 appContext,
                 AppDatabase::class.java,
                 "app_database"
             )
-//                .addTypeConverter(dbTypeConverter)
+                .addTypeConverter(dbTypeConverter)
                 .fallbackToDestructiveMigration().build()
 
         @Singleton
@@ -57,11 +58,9 @@ abstract class DataModule {
         @Singleton
         fun providePostsDao(db: AppDatabase) = db.postsDao()
 
-//        @Provides
-//        @Singleton
-//        fun providePostsLocalDatasource(
-//            postDao: PostsDao,
-//        ) = PostsLocalDatasource(postDao)
+        @Provides
+        @Singleton
+        fun provideCardsDao(db: AppDatabase) = db.cardsDao()
     }
 
 }

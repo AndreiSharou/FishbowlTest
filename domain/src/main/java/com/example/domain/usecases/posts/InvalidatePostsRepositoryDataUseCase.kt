@@ -1,4 +1,4 @@
-package com.example.domain.usecases
+package com.example.domain.usecases.posts
 
 import com.example.data.repositories.PostsRepository
 import com.example.data.utils.DispatchersProvider
@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @ViewModelScoped
-class InvalidatePostsUseCase @Inject constructor(
+class InvalidatePostsRepositoryDataUseCase @Inject constructor(
     private val postsRepository: PostsRepository,
     private val dispatcher: DispatchersProvider
 ) {

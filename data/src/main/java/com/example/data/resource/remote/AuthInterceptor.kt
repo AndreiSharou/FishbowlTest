@@ -23,10 +23,7 @@ class AuthInterceptor @Inject constructor(
 
         val request = chain.request()
         val builder = request.newBuilder()
-//        builder.addHeader("Accept", "application/json")
-        token?.let {
-            builder.addHeader("session-key", it)
-        }
+        builder.addHeader("session-key", token)
         return chain.proceed(builder.build())
     }
 }
