@@ -1,4 +1,4 @@
-package com.example.domain.usecases.posts
+package com.example.domain.usecases
 
 import com.example.data.repositories.PostsRepository
 import com.example.data.utils.DispatchersProvider

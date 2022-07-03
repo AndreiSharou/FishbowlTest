@@ -1,6 +1,7 @@
 package com.example.data.repositories
 
 import com.example.data.resource.local.datasource.PostsLocalDatasource
+import com.example.data.resource.local.room.model.CardLocalModel
 import com.example.data.resource.local.room.model.PostLocalModel
 import com.example.data.resource.local.room.model.toLocalModel
 import com.example.data.resource.remote.ApiService
@@ -40,6 +41,10 @@ class PostsRepository @Inject constructor(
 
     suspend fun observePosts(): Flow<List<PostLocalModel>> {
         return localData.getPosts()
+    }
+
+    suspend fun observeMetaCards(): Flow<List<CardLocalModel>> {
+        return localData.getCards()
     }
 
 

@@ -4,10 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.example.data.resource.local.room.util.DbTypeConverter
-import com.example.data.resource.remote.model.AnswersRemoteModel
-import com.example.data.resource.remote.model.CardRemoteModel
-import com.example.data.resource.remote.model.ContentRemoteModel
-import com.example.data.resource.remote.model.ResultsUiRemoteModel
+import com.example.data.resource.remote.model.*
 
 @Entity(tableName = "Card")
 data class CardLocalModel(
@@ -18,12 +15,12 @@ data class CardLocalModel(
     var type: Int?,
     @TypeConverters(DbTypeConverter::class)
     var content: ContentLocalModel?,
-    var position: Int?,
+    var position: Int,
     var priority: Int?,
     var label: String?,
     var hideAfterClick: Boolean?,
     @TypeConverters(DbTypeConverter::class)
-    var navigation: List<String> = listOf()
+    var navigation: List<NavigationLocalModel> = listOf()
 )
 
 
@@ -33,7 +30,7 @@ data class ContentLocalModel(
     var titleColor: String?,
     var backgroundColor: String?,
     var textColor: String?,
-    var answers: List<AnswersLocalModel> = listOf(),
+    var answers: List<AnswersLocalModel>? = listOf(),
     var showResults: Boolean?,
     var showHelpLink: Boolean?,
     var title: String?,
@@ -54,6 +51,10 @@ data class AnswersLocalModel(
     var variant: Int?
 )
 
+data class NavigationLocalModel(
+    val page: String?
+)
+
 fun CardRemoteModel.toLocalModel() = CardLocalModel(
     _id,
     date,
@@ -64,7 +65,7 @@ fun CardRemoteModel.toLocalModel() = CardLocalModel(
     priority,
     label,
     hideAfterClick,
-    navigation
+    navigation.map { it.toLocalModel() }
 )
 
 fun ContentRemoteModel.toLocalModel() = ContentLocalModel(
@@ -73,7 +74,7 @@ fun ContentRemoteModel.toLocalModel() = ContentLocalModel(
     titleColor,
     backgroundColor,
     textColor,
-    answers.map { it.toLocalModel() },
+    answers?.map { it.toLocalModel() },
     showResults,
     showHelpLink,
     title,
@@ -87,3 +88,8 @@ fun ResultsUiRemoteModel.toLocalModel() = ResultsUiLocalModel(
 fun AnswersRemoteModel.toLocalModel() = AnswersLocalModel(
     _id, text, color, variant
 )
+
+fun NavigationRemoteModel.toLocalModel() = NavigationLocalModel(
+    page
+)
+
