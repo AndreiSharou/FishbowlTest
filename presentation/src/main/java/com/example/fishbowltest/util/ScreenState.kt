@@ -1,4 +1,5 @@
-package com.example.domain.util
+package com.example.fishbowltest.util
 
-class ScreenState {
+enum class ScreenState {
+    LOADING, ERROR, IDLE
 }

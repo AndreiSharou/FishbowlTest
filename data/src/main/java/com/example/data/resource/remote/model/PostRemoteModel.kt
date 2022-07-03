@@ -36,7 +36,17 @@ data class SignRemoteModel(
 
 data class MessageDataRemoteModel(
     val text: String?,
-    val linkMetadata: String?
+    val linkMetadata: LinkMetadataRemoteModel?
+)
+
+data class LinkMetadataRemoteModel(
+    val title:String?,
+    val metaType: Int?,
+    val description: String?,
+    val imageUrl: String?,
+    val imageSize: String?,
+    val domain: String?,
+    val url: String?,
 )
 
 data class FirstLastNameRemoteModel(

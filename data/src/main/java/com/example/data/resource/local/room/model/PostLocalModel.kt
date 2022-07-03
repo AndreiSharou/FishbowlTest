@@ -48,7 +48,18 @@ data class SignLocalModel(
 
 data class MessageDataLocalModel(
     val text: String?,
-    val linkMetadata: String?
+    @Embedded(prefix = "linkMetadata_")
+    val linkMetadata: LinkMetadataLocalModel?
+)
+
+data class LinkMetadataLocalModel(
+    val title:String?,
+    val metaType: Int?,
+    val description: String?,
+    val imageUrl: String?,
+    val imageSize: String?,
+    val domain: String?,
+    val url: String?,
 )
 
 data class FirstLastNameLocalModel(
@@ -96,7 +107,11 @@ fun SignRemoteModel.toLocalModel() = SignLocalModel(
 )
 
 fun MessageDataRemoteModel.toLocalModel() = MessageDataLocalModel(
-    text, linkMetadata
+    text, linkMetadata?.toLocalModel()
+)
+
+fun LinkMetadataRemoteModel.toLocalModel() = LinkMetadataLocalModel(
+    title, metaType, description, imageUrl, imageSize, domain, url
 )
 
 fun FirstLastNameRemoteModel.toLocalModel() = FirstLastNameLocalModel(

@@ -1,3 +1,6 @@
 package com.example.domain.results
 
-data class CompletableResult()
+sealed class CompletableResult {
+    object Success : CompletableResult()
+    data class Error(val errorMessage: String?) : CompletableResult()
+}
