@@ -5,6 +5,7 @@ import com.example.data.resource.local.room.model.PostLocalModel
 import com.example.data.resource.local.room.model.toLocalModel
 import com.example.data.resource.remote.ApiService
 import com.example.data.resource.remote.response.ResponseErrorMessage
+import com.example.data.resource.remote.response.meta.MetaResponse
 import com.example.data.resource.remote.response.posts.PostsResponse
 import com.haroldadmin.cnradapter.NetworkResponse
 import kotlinx.coroutines.flow.Flow
@@ -21,7 +22,7 @@ class PostsRepository @Inject constructor(
         localData.deleteAll()
     }
 
-    suspend fun loadPosts(): NetworkResponse<PostsResponse, ResponseErrorMessage>{
+    suspend fun loadPosts(): NetworkResponse<PostsResponse, ResponseErrorMessage> {
         val response = api.getPosts(POSTS_COUNT, localData.getPostsCount())
         if (response is NetworkResponse.Success) {
             localData.savePosts(response.body.posts.map { it.toLocalModel() })
@@ -29,7 +30,15 @@ class PostsRepository @Inject constructor(
         return response
     }
 
-    suspend fun observePosts() : Flow<List<PostLocalModel>> {
+    suspend fun loadMeta(): NetworkResponse<MetaResponse, ResponseErrorMessage> {
+        val response = api.getMeta()
+        if (response is NetworkResponse.Success) {
+            localData.saveCards(response.body.cards.map { it.toLocalModel() })
+        }
+        return response
+    }
+
+    suspend fun observePosts(): Flow<List<PostLocalModel>> {
         return localData.getPosts()
     }
 

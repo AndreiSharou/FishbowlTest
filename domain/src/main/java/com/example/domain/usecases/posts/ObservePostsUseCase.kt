@@ -1,12 +1,10 @@
-package com.example.domain.usecases
+package com.example.domain.usecases.posts
 
 import com.example.data.repositories.PostsRepository
 import com.example.data.utils.DispatchersProvider
 import com.example.domain.model.PostDomain
 import com.example.domain.model.toDomain
 import dagger.hilt.android.scopes.ViewModelScoped
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext

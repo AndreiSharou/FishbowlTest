@@ -15,9 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var binding: ActivityMainBinding
-
-//    private val viewModel by viewModels<MainViewModel>()
-//    private val viewModel: MainViewModel by viewModels()
     private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -2,6 +2,7 @@ package com.example.data.resource.remote
 
 import com.example.data.BuildConfig
 import com.example.data.resource.remote.response.ResponseErrorMessage
+import com.example.data.resource.remote.response.meta.MetaResponse
 import com.example.data.resource.remote.response.posts.PostsResponse
 import com.google.gson.Gson
 import com.haroldadmin.cnradapter.NetworkResponse
@@ -23,7 +24,7 @@ interface ApiService {
 
     @GET("/v4/feed/consolidated/meta")
     suspend fun getMeta(
-    ): NetworkResponse<PostsResponse, ResponseErrorMessage>
+    ): NetworkResponse<MetaResponse, ResponseErrorMessage>
 
     companion object {
         fun buildApi(
