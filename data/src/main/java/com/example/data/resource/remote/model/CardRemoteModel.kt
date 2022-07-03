@@ -6,11 +6,11 @@ data class CardRemoteModel(
     var enabled: Boolean?,
     var type: Int?,
     var content: ContentRemoteModel?,
-    var position: Int?,
+    var position: Int,
     var priority: Int?,
     var label: String?,
     var hideAfterClick: Boolean?,
-    var navigation: List<String> = listOf()
+    var navigation: List<NavigationRemoteModel> = listOf()
 )
 
 data class ContentRemoteModel(
@@ -19,7 +19,7 @@ data class ContentRemoteModel(
     var titleColor: String?,
     var backgroundColor: String?,
     var textColor: String?,
-    var answers: List<AnswersRemoteModel> = listOf(),
+    var answers: List<AnswersRemoteModel>? = listOf(),
     var showResults: Boolean?,
     var showHelpLink: Boolean?,
     var title: String?,
@@ -38,4 +38,8 @@ data class AnswersRemoteModel(
     var text: String?,
     var color: String?,
     var variant: Int?
+)
+
+data class NavigationRemoteModel(
+    val page: String?
 )

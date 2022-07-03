@@ -3,8 +3,9 @@ package com.example.fishbowltest
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.results.CompletableResult
+import com.example.domain.usecases.InvalidatePostsRepositoryDataUseCase
 import com.example.domain.usecases.metacards.LoadMetaUseCase
-import com.example.domain.usecases.posts.InvalidatePostsRepositoryDataUseCase
+import com.example.domain.usecases.metacards.ObserveMetaCardsUseCase
 import com.example.domain.usecases.posts.LoadPostsUseCase
 import com.example.domain.usecases.posts.ObservePostsUseCase
 import com.example.fishbowltest.util.ScreenState
@@ -18,6 +19,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val invalidatePostsRepositoryDataUseCase: InvalidatePostsRepositoryDataUseCase,
     private val observePostsUseCase: ObservePostsUseCase,
+    private val observeMetaCardsUseCase: ObserveMetaCardsUseCase,
     private val loadPostsUseCase: LoadPostsUseCase,
     private val loadMetaUseCase: LoadMetaUseCase,
 ) : ViewModel() {
@@ -28,6 +30,11 @@ class MainViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             invalidatePostsRepositoryDataUseCase.invoke()
+            launch {
+                observeMetaCardsUseCase.invoke().collect {
+                    _uiState.value = _uiState.value.copy(cardsList = it)
+                }
+            }
             launch {
                 observePostsUseCase.invoke().collect {
                     _uiState.value = _uiState.value.copy(postList = it)

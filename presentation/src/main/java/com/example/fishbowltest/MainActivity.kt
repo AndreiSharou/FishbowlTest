@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             viewModel.uiState.collect { state ->
 
                 (binding.recycler.adapter as MainAdapter).submitList(
-                    state.postList
+                    state.list
                 )
                 when (state.screenState) {
                     ScreenState.IDLE -> {
