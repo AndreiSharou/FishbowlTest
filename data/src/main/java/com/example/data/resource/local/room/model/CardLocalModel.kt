@@ -45,10 +45,10 @@ data class ResultsUiLocalModel(
 )
 
 data class AnswersLocalModel(
-    var _id: String?,
-    var text: String?,
-    var color: String?,
-    var variant: Int?
+    var _id: String,
+    var text: String,
+    var color: String,
+    var variant: Int
 )
 
 data class NavigationLocalModel(

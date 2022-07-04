@@ -1,4 +1,4 @@
-package com.example.fishbowltest
+package com.example.fishbowltest.screen.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

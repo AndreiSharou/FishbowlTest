@@ -3,7 +3,7 @@ package com.example.domain.usecases.posts
 import com.example.data.repositories.PostsRepository
 import com.example.data.utils.DispatchersProvider
 import com.example.domain.model.PostDomainModel
-import com.example.domain.model.toDomain
+import com.example.domain.model.toDomainModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -19,7 +19,7 @@ class ObservePostsUseCase  @Inject constructor(
     suspend operator fun invoke(): Flow<List<PostDomainModel>> {
         return withContext(dispatcher.io) {
             postsRepository.observePosts().map { list ->
-                list.map { it.toDomain() }
+                list.map { it.toDomainModel() }
             }
         }
     }

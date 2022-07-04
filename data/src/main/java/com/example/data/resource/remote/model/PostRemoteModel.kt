@@ -26,9 +26,12 @@ data class SignRemoteModel(
     val _id: String,
     val professionalTitle: String?,
     val companyDisplayName: String?,
+    val title: String?,
+    val location: String?,
     val signType: Int,
     val firstLastName: FirstLastNameRemoteModel?,
     val userColor: String?,
+    val username: String?,
     val schoolMeta: SchoolMetaRemoteModel?,
     val profileImage: String?,
     val signAccent: Int?
