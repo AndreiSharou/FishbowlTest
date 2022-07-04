@@ -34,10 +34,10 @@ data class ResultsUiRemoteModel(
 )
 
 data class AnswersRemoteModel(
-    var _id: String?,
-    var text: String?,
-    var color: String?,
-    var variant: Int?
+    var _id: String,
+    var text: String,
+    var color: String,
+    var variant: Int
 )
 
 data class NavigationRemoteModel(

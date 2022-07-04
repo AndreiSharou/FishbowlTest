@@ -37,10 +37,10 @@ data class ResultsUiDomainModel(
 )
 
 data class AnswersDomainModel(
-    var _id: String?,
-    var text: String?,
-    var color: String?,
-    var variant: Int?
+    var _id: String,
+    var text: String,
+    var color: String,
+    var variant: Int
 )
 
 data class NavigationDomainModel(

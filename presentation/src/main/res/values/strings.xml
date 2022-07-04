@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FishbowlTest</string>
+    <string name="deactivated_user">Deactivated user</string>
+    <string name="teacher">Teacher</string>
 </resources>

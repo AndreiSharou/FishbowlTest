@@ -1,4 +1,4 @@
-package com.example.fishbowltest
+package com.example.fishbowltest.screen.main
 
 import com.example.domain.model.CardDomainModel
 import com.example.domain.model.PostDomainModel

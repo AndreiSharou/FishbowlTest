@@ -2,7 +2,7 @@ package com.example.fishbowltest.util
 
 import com.example.domain.model.CardDomainModel
 import com.example.domain.model.PostDomainModel
-import com.example.fishbowltest.MainFeedModel
+import com.example.fishbowltest.screen.main.MainFeedModel
 
 object FeedUtils {
 
