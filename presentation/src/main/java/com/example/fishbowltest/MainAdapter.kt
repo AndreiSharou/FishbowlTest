@@ -75,7 +75,7 @@ class MainAdapter :
             oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: MainFeedModel, newItem: MainFeedModel) =
-            oldItem.hashCode() == oldItem.hashCode()
+            oldItem == newItem
     }
 
     companion object {
